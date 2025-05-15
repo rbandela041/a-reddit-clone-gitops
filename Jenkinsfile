@@ -18,7 +18,7 @@ pipeline {
             steps {
                 sh """
                     cat deployment.yaml
-                    sed -i "s|\(image:.*reddit-clone-app:\).*|\1${IMAGE_TAG}|" deployment.yaml
+                    sed -i "s|^\(\s*image:\s*rbmihawk/reddit-clone-app:\).*|\1${IMAGE_TAG}|" deployment.yaml
                     cat deployment.yaml
                 """
             }
