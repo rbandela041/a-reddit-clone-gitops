@@ -13,7 +13,7 @@ spec:
         app: reddit-clone-app
     spec:
       containers:
-        - name: reddit-clone-app:1.0.0-30
+        - name: reddit-clone-app
           image: rbmihawk/reddit-clone-app:1.0.0-32
           resources:
             limits:
