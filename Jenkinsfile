@@ -14,15 +14,16 @@ pipeline {
                      git branch: 'main', credentialsId: 'github', url: 'https://github.com/rbandela041/a-reddit-clone-gitops'
              }
          }
-         stage("Update the Deployment Tags") {
-            steps {
-                sh """
-                    cat deployment.yaml
-                    sed -i "s|\(image:.*reddit-clone-app:\).*|\1${IMAGE_TAG}|" deployment.yaml
-                    cat deployment.yaml
-                """
-            }
-         }
+  stage("Update the Deployment Tags") {
+    steps {
+        sh """
+            cat deployment.yaml
+            sed -i 's|\\(image:.*${APP_NAME}:\\).*|\\1${IMAGE_TAG}|' deployment.yaml
+            cat deployment.yaml
+        """
+    }
+}
+
          stage("Push the changed deployment file to GitHub") {
             steps {
                 sh """
